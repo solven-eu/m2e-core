@@ -42,6 +42,7 @@
     <!-- eclipse version m2e is built against -->
     <eclipse.stream>oxygen</eclipse.stream>
     <eclipse-repo.url>http://download.eclipse.org/releases/${eclipse.stream}</eclipse-repo.url>
+    <jdt-repo.url>http://download.eclipse.org/eclipse/updates/4.7-Y-builds/</jdt-repo.url>
   </properties>
 
   <organization>
@@ -71,6 +72,11 @@
       <id>eclipse-license</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/cbi/updates/license</url>
+    </repository>
+    <repository>
+      <id>jdt-beta</id>
+      <layout>p2</layout>
+      <url>${jdt-repo.url}</url>
     </repository>
   </repositories>
 

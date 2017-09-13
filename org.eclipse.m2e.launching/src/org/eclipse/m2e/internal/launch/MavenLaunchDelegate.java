@@ -113,6 +113,12 @@ public class MavenLaunchDelegate extends JavaLaunchDelegate implements MavenLaun
     return cp.toArray(new String[cp.size()]);
   }
 
+  public String[][] getClasspathAndModulepath(ILaunchConfiguration configuration) throws CoreException {
+    String[][] paths = new String[2][];
+    paths[0] = getClasspath(configuration);
+    return paths;
+  }
+
   public String getProgramArguments(ILaunchConfiguration configuration) throws CoreException {
     if(programArguments == null) {
       String goals = getGoals(configuration);
@@ -289,8 +295,8 @@ public class MavenLaunchDelegate extends JavaLaunchDelegate implements MavenLaun
           arguments.append(line);
         }
       } catch(IOException ex) {
-        IStatus error = new Status(IStatus.ERROR, IMavenConstants.PLUGIN_ID, NLS.bind(
-            Messages.MavenLaunchDelegate_error_cannot_read_jvmConfig, jvmConfig.getAbsolutePath()), ex);
+        IStatus error = new Status(IStatus.ERROR, IMavenConstants.PLUGIN_ID,
+            NLS.bind(Messages.MavenLaunchDelegate_error_cannot_read_jvmConfig, jvmConfig.getAbsolutePath()), ex);
         throw new CoreException(error);
       }
     }
